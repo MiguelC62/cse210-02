@@ -1,4 +1,3 @@
-from random import choice
 from game.cards import Card
 
 class Director:
@@ -7,7 +6,7 @@ class Director:
     The responsibility of a Director is to control the sequence of play.
 
     Attributes:
-        points (List[Die]): A list of Die instances.
+        points (List[Card]): A list of Card instances.
         is_playing (boolean): Whether or not the game is being played.
         score (int): The score for one round of play.
         total_score (int): The score for the entire game.
@@ -35,7 +34,7 @@ class Director:
             self.do_outputs()
 
     def get_inputs(self):
-        """Ask the user if they want to roll.
+        """Ask the user if card is high or low.
 
         Args:
             self (Director): An instance of Director.
@@ -48,12 +47,17 @@ class Director:
         card2 = Card()
         card2.show()
         print(f"Next card was: {card2.value}")
-        if (card1.value > card2.value) and choice == "l":
-            self.guess = True
-        elif (card1.value < card2.value) and choice == "h":
-            self.guess = True
-        else:
-            self.guess = False
+        
+        #Error handling for TypeError (int and str)
+        try:
+            if (card1.value > card2.value) and choice == "l":
+                self.guess = True
+            elif (card1.value < card2.value) and choice == "h":
+                self.guess = True
+            else:
+                self.guess = False
+        except TypeError as err:
+            pass
        
     def do_updates(self):
         """Updates the player's score.
@@ -70,7 +74,7 @@ class Director:
             self.score -= 75
 
     def do_outputs(self):
-        """Displays the dice and the score. Also asks the player if they want to roll again. 
+        """Displays the cards and the score. Also asks the player if they want to roll again. 
 
         Args:
             self (Director): An instance of Director.
@@ -85,4 +89,3 @@ class Director:
             self.is_playing = (answer == "y")
         else:
             self.is_playing = False
-       
