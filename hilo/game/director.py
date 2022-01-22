@@ -6,10 +6,9 @@ class Director:
     The responsibility of a Director is to control the sequence of play.
 
     Attributes:
-        points (List[Card]): A list of Card instances.
         is_playing (boolean): Whether or not the game is being played.
         score (int): The score for one round of play.
-        total_score (int): The score for the entire game.
+        guess (boolean): If the gamer guess correctly
     """
 
     def __init__(self):
