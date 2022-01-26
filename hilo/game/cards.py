@@ -1,7 +1,9 @@
 import random
 
 class Card:
-    """A set of 13 different cards and the director shows one at a time. The player must guess if the new card is higher or lower than the previous one.
+    """A set of 13 different cards and the director shows one at a time. 
+    The player must guess if the new card is higher or lower than the 
+    previous one.
    
     Attributes:
         value (int): The number of points.

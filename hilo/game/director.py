@@ -8,7 +8,7 @@ class Director:
     Attributes:
         is_playing (boolean): Whether or not the game is being played.
         score (int): The score for one round of play.
-        guess (boolean): If the gamer guess correctly
+        guess (boolean): If the gamer guesses correctly
     """
 
     def __init__(self):
@@ -73,7 +73,7 @@ class Director:
             self.score -= 75
 
     def do_outputs(self):
-        """Displays the cards and the score. Also asks the player if they want to roll again. 
+        """Displays the cards and the score. Also asks the player if they want to play again. 
 
         Args:
             self (Director): An instance of Director.
