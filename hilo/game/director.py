@@ -38,25 +38,38 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        card1 = Card()
-        card1.show()
-        print()
-        print(f"The card is: {card1.value}")
-        choice = input("Higer or lower? [h/l] ")
-        card2 = Card()
-        card2.show()
-        print(f"Next card was: {card2.value}")
+        lives = 3
+        while lives > 0:
+            card1 = Card()
+            card1.show()
+            print()
+            print(f"The card is: {card1.value}")
+            choice = input("Higer or lower? [h/l] ")
+            card2 = Card()
+            card2.show()
+            print(f"Next card was: {card2.value}")
         
-        #Error handling for TypeError (int and str)
-        try:
-            if (card1.value > card2.value) and choice == "l":
-                self.guess = True
-            elif (card1.value < card2.value) and choice == "h":
-                self.guess = True
-            else:
-                self.guess = False
-        except TypeError as err:
-            pass
+            #Error handling for TypeError (int and str)
+            
+            try:
+                if (card1.value > card2.value) and choice == "l":
+                    self.guess = True
+                    break
+                elif (card1.value < card2.value) and choice == "h":
+                    self.guess = True
+                    break
+                else:
+                    self.guess = False
+                    lives = lives -1
+                    print(f"You are left with {lives} tries.")
+                    if lives == 0:
+                        self.is_playing = False
+                        print("Game Over")
+                    else:
+                        self.guess = False
+                        break
+            except TypeError as err:
+                pass
        
     def do_updates(self):
         """Updates the player's score.
