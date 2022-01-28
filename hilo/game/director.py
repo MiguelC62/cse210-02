@@ -2,13 +2,12 @@ from dbm.dumb import error
 from game.cards import Card
 
 class Director:
-    """A person who directs the game. 
-    
-    The responsibility of a Director is to control the sequence of play.
+    """A person who directs the game. The responsibility of a Director is to control the sequence of play.
     Attributes:
         is_playing (boolean): Whether or not the game is being played.
         score (int): The score for one round of play.
-        guess (boolean): If the gamer guesses correctly
+        guess (boolean): If the gamer guesses correctly.
+        lives (int): The number of failed attempts, maximum is three.
     """
 
     def __init__(self):
@@ -46,7 +45,11 @@ class Director:
             card1.show()
             card1.suite_card()
             print()
-            print("The card is:" + card1.string_value)
+            CRED = '\033[91m'
+            CGREEN = '\033[92m'
+            CBLUE = '\033[94m'
+            CEND = '\033[0m'
+            print("The card is: " + CGREEN + card1.string_value + CEND)
             
             choice = str(input("Higher or lower? [h/l]: "))
 
@@ -54,10 +57,9 @@ class Director:
                 card2 = Card()
                 card2.show()
                 card2.suite_card()
-                print("Next card was:" + card2.string_value)
+                print("Next card was: " + CBLUE + card2.string_value + CEND)
 
             else:
-                choice.isalpha() != "h" or "l"
                 self.guess = False
                 self.lives -=1
                 print("Invalid input!!! Enter [h or l]")
@@ -65,21 +67,18 @@ class Director:
 
                 if self.lives == 0:
                     self.is_playing = False
-                    print("Game Over")
+                    print(CRED + "Game Over" + CEND)
                     print(f"Your final score was: {self.score}")
                     answer = input("Play again? [y/n] ")
                     self.is_playing = (answer == "y")
 
                 return
   
-
             if (card1.value > card2.value) and choice == "l":
                 self.guess = True
-                # break
 
             elif (card1.value < card2.value) and choice == "h":
                 self.guess = True
-                # break  
 
             else:
                 self.guess = False
@@ -88,9 +87,8 @@ class Director:
 
                 if self.lives == 0:
                     self.is_playing = False
-                    print("Game Over")
+                    print(CRED + "Game Over" + CEND)
                     print(f"Your final score was: {self.score}")
-            
                     answer = input("Play again? [y/n] ")
                     self.is_playing = (answer == "y")
  
@@ -111,7 +109,7 @@ class Director:
             self.score -= 75
 
     def do_outputs(self):
-        """Displays the cards and the score. Also asks the player if they want to play again. 
+        """Displays the cards and the score.
         Args:
             self (Director): An instance of Director.
         """
@@ -119,11 +117,7 @@ class Director:
         if not self.is_playing:
             return
 
-        #if self.score > 0 and self.lives == 0:
         if self.lives == 0:
-            # print(f"Your final score was: {self.score}")
-            # answer = input("Play again? [y/n] ")
-            # self.is_playing = (answer == "y")
             self.lives = 3
         elif self.score > 0:
             print(f"Your score is: {self.score}")
