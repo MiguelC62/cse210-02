@@ -92,12 +92,6 @@ class Director:
         except TypeError as err:
             print(err)
 
-      
-
-
-       
-            
-       
     def do_updates(self):
         """Updates the player's score.
         Args:
