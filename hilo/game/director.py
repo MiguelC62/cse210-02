@@ -56,17 +56,20 @@ class Director:
                 card2.suite_card()
                 print("Next card was:" + card2.string_value)
 
-            else: 
+            else:
+                choice.isalpha() != "h" or "l"
                 self.guess = False
                 self.lives -=1
-                print("Invalid... Only strings allowed!")
+                print("Invalid input!!! Enter [h or l]")
                 print(f"You are left with {self.lives} tries")
 
                 if self.lives == 0:
                     self.is_playing = False
                     print("Game Over")
+                    print(f"Your final score was: {self.score}")
                     answer = input("Play again? [y/n] ")
                     self.is_playing = (answer == "y")
+
                 return
   
 
@@ -86,9 +89,11 @@ class Director:
                 if self.lives == 0:
                     self.is_playing = False
                     print("Game Over")
+                    print(f"Your final score was: {self.score}")
+            
                     answer = input("Play again? [y/n] ")
                     self.is_playing = (answer == "y")
-
+ 
         except TypeError as err:
             print(err)
 
@@ -116,14 +121,15 @@ class Director:
 
         #if self.score > 0 and self.lives == 0:
         if self.lives == 0:
-            print(f"Your final score was: {self.score}")
-            answer = input("Play again? [y/n] ")
-            self.is_playing = (answer == "y")
+            # print(f"Your final score was: {self.score}")
+            # answer = input("Play again? [y/n] ")
+            # self.is_playing = (answer == "y")
             self.lives = 3
         elif self.score > 0:
             print(f"Your score is: {self.score}")
             self.is_playing = True
         else:
             self.is_playing = False
+
 
        
