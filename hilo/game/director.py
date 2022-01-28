@@ -29,6 +29,8 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
+        print("You earn 100 points when you hit and lose 75 when you miss.")
+        print(f"Your initial score is: {self.score}")
         while self.is_playing and self.lives > 0:
             self.get_inputs()
             self.do_updates()
@@ -40,16 +42,16 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        #lives = 3
-    #while self.lives > 0:
         card1 = Card()
         card1.show()
+        card1.suite_card()
         print()
-        print(f"The card is: {card1.value}")
+        print("The card is: " + card1.string_value)
         choice = input("Higer or lower? [h/l] ")
         card2 = Card()
         card2.show()
-        print(f"Next card was: {card2.value}")
+        card2.suite_card()
+        print("Next card was: " + card2.string_value)
     
         #Error handling for TypeError (int and str)
         
