@@ -4,7 +4,8 @@ CSE Team 01
 
 # Hilo
 
-Do you feel lucky? Try it on Hilo. The rules of this game are simple, you just have to guess if the next card will be higher or lower than the previous one. Points are gained or lost based on whether the player guessed right or wrong.
+Do you feel lucky? Try it on Hilo. The rules of this game are simple, you just have to guess if the next card will be higher or lower than the previous one. Points are gained or lost based on whether the player guessed right or wrong. A set of 13 different cards and the director shows one at a time. The player has three tries to be wrong.
+You earn 100 points when you hit and lose 75 when you miss.
 
 ## Getting Started
 
@@ -30,6 +31,8 @@ The project files and folders are organized as follows:
 root                    (project root folder)
 +-- hilo                (source code for game)
   +-- game              (specific classes)
+    +-- cards.py        (class called by director.py)
+    +-- director.py     (Class called by main.py)
   +-- __main__.py       (program entry point)
 +-- README.md           (general info)
 ```
